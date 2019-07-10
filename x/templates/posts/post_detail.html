@@ -1,0 +1,20 @@
+{% extends 'posts/base.html' %}
+{% block content%}
+        <h1>{{ post.title }}</h1>
+        {% if post.image %}
+            <img src="http://localhost:8000/{{post.image.url}}" alt="My Image" style = "width: 218px; height: 312px">
+        {% endif %}
+        <br>
+        <p>{{ post.description }}</p><br>
+        <p>Genre : 
+        {% for category in post.categories.all %}
+        <br>#{{ category.name }}
+        {% endfor %}
+        </p>
+
+        <div class="date">
+            <p>Posted on : {{ post.created_at }}</p>
+        </div>
+        <br>
+        <br>
+{% endblock %}

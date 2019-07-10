@@ -1,0 +1,17 @@
+{% extends 'posts/base.html' %}
+{% block content %}
+    {% for i in posts %}
+        <h1><a href="{% url 'post_detail' pk=i.pk%}">{{ i.title }}</a></h1>
+        {% if i.image %}
+            <img src="http://localhost:8000/{{i.image.url}}" alt="My Image" style = "width: 218px; height: 312px">
+        {% endif %}
+        <br>
+        <p> Genre : 
+        {% for category in i.categories.all %}
+            #{{ category.name }}, 
+        {% endfor %}
+        </p>
+        <br>
+        <br>
+    {% endfor %}
+{% endblock %}
